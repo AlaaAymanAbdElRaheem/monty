@@ -1,0 +1,20 @@
+#include "moty.h"
+
+/**
+ * swap - swaps the top two elements of the stack.
+ * @stack: pointer to the head node
+ * @line_number: unused argument
+ */
+
+void swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = *stack;
+	(void) line_number;
+
+	if (*stack == NULL)
+	{
+		printf("L<line_number>: can't pop an empty stack");
+		exit(EXIT_FAILURE);
+	}
+
+}
