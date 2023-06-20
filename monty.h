@@ -38,5 +38,7 @@ typedef struct instruction_s
 int _isdigit(int c);
 void push(stack_t **stack, unsigned int n);
 void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 
 #endif
