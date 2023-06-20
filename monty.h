@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <string.h>
+#define _GNU_SOURCE
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -54,4 +56,5 @@ void pop(stack_t **stack, unsigned int line_number);
 /* error_handling.c */
 void print_error(int sz, ...);
 void free_allocated(void);
+void exec_op(char *code, stack_t **stack);
 #endif

@@ -1,4 +1,4 @@
-#include "moty.h"
+#include "monty.h"
 
 /**
  * pall - prints all the elements of the stack.

@@ -10,6 +10,7 @@
 int main(int argc, char **argv)
 {
 	char *op_code;
+	int len = 0;
 
 	if (argc != 2)
 		print_error(1, "USAGE: monty file");
@@ -17,11 +18,11 @@ int main(int argc, char **argv)
 	if (global_var.file == NULL)
 		print_error(3, argv[0], ": Can't open ", argv[1]);
 
-	while (getline(&global_var.instruction, 0, global_var.file) != -1)
+	while (getline(&global_var.instruction, &len, global_var.file) != -1)
 	{
 		global_var.line_number++;
 		op_code = strtok(global_var.instruction, " \n\t");
-		if (op_code == "#"|| NULL)
+		if (op_code == NULL || *op_code == '#')
 			continue;
 		exec_op(op_code, &global_var.stack);
 	}
