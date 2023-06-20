@@ -2,7 +2,8 @@
 
 /**
  * pall - prints all the elements of the stack.
- * @top: pointer to thehead node
+ * @stack: pointer to thehead node
+ * @line_number: unused argument
  */
 
 void pall(stack_t **stack, unsigned int line_number)

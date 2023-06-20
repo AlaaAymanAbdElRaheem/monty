@@ -48,6 +48,8 @@ extern global_variable_t global_var;
 int _isdigit(int c);
 void push(stack_t **stack, unsigned int n);
 void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 
 /* error_handling.c */
 void print_error(int sz, ...);
