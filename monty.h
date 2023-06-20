@@ -2,6 +2,7 @@
 #define MONTY_H
 
 #define _GNU_SOURCE
+#define _GNU
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -74,4 +75,6 @@ void nop(stack_t **stack, unsigned int line_number);
 void print_error(int sz, ...);
 void free_allocated(void);
 void exec_op(char *code, stack_t **stack);
+int is_number(char *str);
+
 #endif

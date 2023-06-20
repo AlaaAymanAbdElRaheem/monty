@@ -1,11 +1,7 @@
-push 12
-push 14
-add
+push 0
+push 1
+div
 pint
-pall
-push 3
-push 4
-push 5
-push 6
-mod
+add
+push 1
 pall

@@ -1,4 +1,29 @@
 #include "monty.h"
+/**
+ * is_number - check if a given string is a number
+ * @str: string to check
+ * Return: 1 if true, 0 if false
+*/
+int is_number(char *str)
+{
+	int i = 0;
+
+	if (str == NULL)
+		return (0);
+	if (str[0] == '-')
+		i++;
+	for (; str[i] != '\0'; i++)
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+	}
+	return (1);
+}
+/**
+ * exec_op - executes the opcode
+ * @code: opcode
+ * @stack: pointer to the head node
+*/
 void exec_op(char *code, stack_t **stack)
 {
 	int i = 0, flag = 0;
@@ -27,7 +52,7 @@ void exec_op(char *code, stack_t **stack)
 			argv = strtok(NULL, " \n\t");
 			if (strcmp(op_codes[i].opcode, "push") == 0)
 			{
-				if (argv == NULL)
+				if (argv == NULL || !is_number(argv))
 					print_error(3, "L", &global_var.line_number, ": usage: push integer");
 				else
 					op_codes[i].f(stack, atoi(argv));
