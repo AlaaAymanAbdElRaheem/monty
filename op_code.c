@@ -42,6 +42,9 @@ void exec_op(char *code, stack_t **stack)
 		{"div", _div},
 		{"mul", mul},
 		{"mod", mod},
+		{"pchar", pchar},
+		{"pstr", pstr},
+		{"rotl", rotl},
 		{NULL, NULL}
 	};
 	while (op_codes[i].opcode != NULL)
