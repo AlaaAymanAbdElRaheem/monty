@@ -41,6 +41,9 @@ void exec_op(char *code, stack_t **stack)
 		{"div", _div},
 		{"mul", mul},
 		{"mod", mod},
+		{"pchar", pchar},
+		{"pstr", pstr},
+		{"rotl", rotl},
 		{NULL, NULL}
 	};
 	while (op_codes[i].opcode != NULL)
@@ -62,6 +65,11 @@ void exec_op(char *code, stack_t **stack)
 		i++;
 	}
 	if (!flag)
+<<<<<<< HEAD
 		print_error_opcode("unknown instruction", code, &global_var.line_number);
 }
 /* void print_error_opcode(char *error, char *opcode, unsigned int *line_number) */
+=======
+		print_error(4, "L", &global_var.line_number, ": unknown instruction ", code);
+}
+>>>>>>> 7acf0ee393c1ea8dcc2a5b76cc8d66bfc106ad70
