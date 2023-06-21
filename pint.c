@@ -13,8 +13,5 @@ void pint(stack_t **stack, unsigned int line_number)
 	if (*stack)
 		printf("%d\n", (*stack)->n);
 	else
-	{
-		printf("L<line_number>: can't pint, stack empty\n");
-		exit(EXIT_FAILURE);
-	}
+		print_error_line("can't pint, stack empty", &global_var.line_number);
 }

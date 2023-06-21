@@ -76,5 +76,7 @@ void print_error(int sz, ...);
 void free_allocated(void);
 void exec_op(char *code, stack_t **stack);
 int is_number(char *str);
+void print_error_opcode(char *error, char *opcode, unsigned int *line_number);
+void print_error_line(char *error, unsigned int *line_number);
 
 #endif

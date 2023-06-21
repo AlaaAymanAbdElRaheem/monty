@@ -27,7 +27,6 @@ int is_number(char *str)
 void exec_op(char *code, stack_t **stack)
 {
 	int i = 0, flag = 0;
-	/* unsigned int line_number = global_var.line_number; */
 	char *argv;
 
 	instruction_t op_codes[] = {
@@ -53,7 +52,7 @@ void exec_op(char *code, stack_t **stack)
 			if (strcmp(op_codes[i].opcode, "push") == 0)
 			{
 				if (argv == NULL || !is_number(argv))
-					print_error(3, "L", &global_var.line_number, ": usage: push integer");
+					print_error_line("usage: push integer", &global_var.line_number);
 				else
 					op_codes[i].f(stack, atoi(argv));
 			}
@@ -63,5 +62,6 @@ void exec_op(char *code, stack_t **stack)
 		i++;
 	}
 	if (!flag)
-		print_error(4, "L", &global_var.line_number, ": unknown instruction ", code);
+		print_error_opcode("unknown instruction", code, &global_var.line_number);
 }
+/* void print_error_opcode(char *error, char *opcode, unsigned int *line_number) */
