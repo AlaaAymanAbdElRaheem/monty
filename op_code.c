@@ -1,25 +1,5 @@
 #include "monty.h"
 /**
- * is_number - check if a given string is a number
- * @str: string to check
- * Return: 1 if true, 0 if false
-*/
-int is_number(char *str)
-{
-	int i = 0;
-
-	if (str == NULL)
-		return (0);
-	if (str[0] == '-')
-		i++;
-	for (; str[i] != '\0'; i++)
-	{
-		if (str[i] < '0' || str[i] > '9')
-			return (0);
-	}
-	return (1);
-}
-/**
  * exec_op - executes the opcode
  * @code: opcode
  * @stack: pointer to the head node

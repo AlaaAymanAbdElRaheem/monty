@@ -1,19 +1,25 @@
 #include "monty.h"
 
 /**
- * _isdigit - checks if the input a number between 0 and 9
- * @c: the input
- * Return: 0 or 1
- */
-
-int _isdigit(int c)
+ * is_number - check if a given string is a number
+ * @str: string to check
+ * Return: 1 if true, 0 if false
+*/
+int is_number(char *str)
 {
-	if (c >= 48 && c <= 57)
-		return (1);
-	else
-		return (0);
-}
+	int i = 0;
 
+	if (str == NULL)
+		return (0);
+	if (str[0] == '-')
+		i++;
+	for (; str[i] != '\0'; i++)
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+	}
+	return (1);
+}
 
 /**
  * check_len - returns the number of elements in a linked list
