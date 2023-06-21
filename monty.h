@@ -52,7 +52,7 @@ typedef struct global_variable_s
 {
 	FILE *file;
 	char *instruction, *op_code;
-	stack_t **stack;
+	stack_t *stack;
 	unsigned int line_number;
 } global_variable_t;
 extern global_variable_t global_var;
