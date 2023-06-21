@@ -8,7 +8,7 @@
 
 void rotl(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp, *curr, *top; 
+	stack_t *temp, *curr, *top;
 	(void) line_number;
 
 	if (*stack == NULL || (*stack)->next == NULL)
@@ -25,4 +25,26 @@ void rotl(stack_t **stack, unsigned int line_number)
 	temp->next = NULL;
 	*stack = top;
 	(*stack)->prev = NULL;
+}
+/**
+ * rotr - The last element of the stack becomes the top one
+ * @stack: pointer to the head
+ * @line_number: unused argument
+*/
+void rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+	(void) line_number;
+
+	if (stack == NULL || *stack == NULL)
+		return;
+	temp = *stack;
+	while (temp->next != NULL && temp != NULL)
+		temp = temp->next;
+
+	temp->prev->next = NULL;
+	temp->prev = NULL;
+	temp->next = *stack;
+	*stack = temp;
+	(*stack)->prev = temp;
 }
