@@ -31,4 +31,3 @@ int main(int argc, char **argv)
 	free_allocated();
 	return (EXIT_SUCCESS);
 }
-
