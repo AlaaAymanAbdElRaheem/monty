@@ -11,7 +11,7 @@ void add(stack_t **stack, unsigned int line_number)
 	(void) line_number;
 
 	if (check_len(*stack) < 2)
-		print_error(3, "L", &global_var.line_number, ": can't add, stack too short");
+		print_error_line("can't add, stack too short", &global_var.line_number);
 
 	(*stack)->next->n = (*stack)->n + (*stack)->next->n;
 	pop(stack, 0);
@@ -29,7 +29,7 @@ void sub(stack_t **stack, unsigned int line_number)
 	(void) line_number;
 
 	if (check_len(*stack) < 2)
-		print_error(3, "L", &global_var.line_number, ": can't sub, stack too short");
+		print_error_line("can't sub, stack too short", &global_var.line_number);
 
 	(*stack)->next->n = (*stack)->next->n - (*stack)->n;
 	pop(stack, 0);
@@ -47,10 +47,9 @@ void _div(stack_t **stack, unsigned int line_number)
 	(void) line_number;
 
 	if (check_len(*stack) < 2)
-		print_error(3, "L", &global_var.line_number, ": can't div, stack too short");
+		print_error_line("can't div, stack too short", &global_var.line_number);
 	else if ((*stack)->n == 0)
-		print_error(3, "L", &global_var.line_number, ": division by zero");
-
+		print_error_line("division by zero", &global_var.line_number);
 	(*stack)->next->n = (*stack)->next->n / (*stack)->n;
 	pop(stack, 0);
 }
@@ -66,8 +65,7 @@ void mul(stack_t **stack, unsigned int line_number)
 	(void) line_number;
 
 	if (check_len(*stack) < 2)
-		print_error(3, "L", &global_var.line_number, ": can't mul, stack too short");
-
+		print_error_line("can't mul, stack too short", &global_var.line_number);
 	(*stack)->next->n = (*stack)->next->n * (*stack)->n;
 	pop(stack, 0);
 }
@@ -83,9 +81,9 @@ void mod(stack_t **stack, unsigned int line_number)
 	(void) line_number;
 
 	if (check_len(*stack) < 2)
-		print_error(3, "L", &global_var.line_number, ": can't mod, stack too short");
+		print_error_line("can't mod, stack too short", &global_var.line_number);
 	else if ((*stack)->n == 0)
-		print_error(3, "L", &global_var.line_number, ": division by zero");
+		print_error_line("division by zero", &global_var.line_number);
 
 	(*stack)->next->n = (*stack)->next->n % (*stack)->n;
 	pop(stack, 0);

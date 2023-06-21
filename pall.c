@@ -12,7 +12,7 @@ void pall(stack_t **stack, unsigned int line_number)
 	(void) line_number;
 
 	if (stack == NULL || *stack == NULL)
-		print_error(3, "L", &global_var.line_number, ": can't pint, stack empty");
+		return;
 	while (temp)
 	{
 		printf("%d\n", temp->n);

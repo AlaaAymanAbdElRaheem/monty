@@ -13,8 +13,10 @@ void push(stack_t **stack, unsigned int n)
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
-		printf("stack overflow.");
-		exit(1);
+		fprintf(stderr, "Error: malloc failed\n");
+		free(new_node);
+		free_allocated();
+		exit(EXIT_FAILURE);
 	}
 
 	new_node->n = n;
