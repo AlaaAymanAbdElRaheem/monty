@@ -21,12 +21,23 @@ void print_error(int sz, ...)
 	free_allocated();
 	exit(EXIT_FAILURE);
 }
+/**
+ * print_error_opcode - print the error message
+ * @error: the error message
+ * @opcode: the opcode
+ * @line_number: the line number
+*/
 void print_error_opcode(char *error, char *opcode, unsigned int *line_number)
 {
 	fprintf(stderr, "L%u: %s %s\n", *line_number, error, opcode);
 	free_allocated();
 	exit(EXIT_FAILURE);
 }
+/**
+ * print_error_line - print the error message
+ * @error: the error message
+ * @line_number: the line number
+*/
 void print_error_line(char *error, unsigned int *line_number)
 {
 	fprintf(stderr, "L%u: %s\n", *line_number, error);
