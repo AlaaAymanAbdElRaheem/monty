@@ -12,7 +12,7 @@ void pall(stack_t **stack, unsigned int line_number)
 	(void) line_number;
 
 	if (stack == NULL || *stack == NULL)
-		print_error_line("can't pall, stack empty", &global_var.line_number);
+		return;
 	while (temp)
 	{
 		printf("%d\n", temp->n);
