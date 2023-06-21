@@ -1,6 +1,6 @@
 #include "monty.h"
 
-
+global_variable_t global_var;
 /**
  * main - entry point
  * @argc: number of arguments
@@ -10,13 +10,15 @@
 int main(int argc, char **argv)
 {
 	char *op_code;
-	int len = 0;
+	size_t len = 0;
 
+	global_var.line_number = 0;
 	if (argc != 2)
 		print_error(1, "USAGE: monty file");
+
 	global_var.file = fopen(argv[1], "r");
 	if (global_var.file == NULL)
-		print_error(3, argv[0], ": Can't open ", argv[1]);
+		print_error(3, argv[1], ": Can't open ", argv[1]);
 
 	while (getline(&global_var.instruction, &len, global_var.file) != -1)
 	{
@@ -27,5 +29,5 @@ int main(int argc, char **argv)
 		exec_op(op_code, &global_var.stack);
 	}
 	free_allocated();
-	return (0);
+	return (EXIT_SUCCESS);
 }

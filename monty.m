@@ -1,8 +1,7 @@
-push 12
-pall
-pop
-pall
-push 13
-push 14
-push 15
+push 0
+push 1
+div
+pint
+add
+push 1
 pall

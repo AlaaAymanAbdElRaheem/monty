@@ -1,11 +1,12 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define _GNU_SOURCE
+#define _GNU
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <string.h>
-#define _GNU_SOURCE
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -38,6 +39,15 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct global_variable_s - global variables
+ * @file: file pointer
+ * @instruction: instruction
+ * @op_code: opcode
+ * @stack: pointer to the head node
+ * @line_number: line number
+ * Description: global variables needed in the program
+ */
 typedef struct global_variable_s
 {
 	FILE *file;
@@ -65,4 +75,6 @@ void nop(stack_t **stack, unsigned int line_number);
 void print_error(int sz, ...);
 void free_allocated(void);
 void exec_op(char *code, stack_t **stack);
+int is_number(char *str);
+
 #endif

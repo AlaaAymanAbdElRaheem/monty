@@ -19,8 +19,10 @@ void free_list(stack_t **stack)
 */
 void free_allocated(void)
 {
-	free(global_var.instruction);
-	fclose(global_var.file);
-	free_list(&global_var.stack);
-
+	if (global_var.file != NULL)
+		fclose(global_var.file);
+	if (global_var.instruction != NULL)
+		free(global_var.instruction);
+	if (global_var.stack != NULL)
+		free_list(&global_var.stack);
 }
