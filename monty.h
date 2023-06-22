@@ -43,23 +43,26 @@ typedef struct instruction_s
  * struct global_variable_s - global variables
  * @file: file pointer
  * @instruction: instruction
- * @op_code: opcode
  * @stack: pointer to the head node
  * @line_number: line number
+ * @stack_mode: stack or queue mode
  * Description: global variables needed in the program
  */
 typedef struct global_variable_s
 {
 	FILE *file;
-	char *instruction, *op_code;
+	char *instruction;
 	stack_t *stack;
 	unsigned int line_number;
+	int stack_mode;
 } global_variable_t;
 extern global_variable_t global_var;
 
 int _isdigit(int c);
 int check_len(stack_t *head);
 void push(stack_t **stack, unsigned int n);
+void add_begining(stack_t **stack, stack_t *newnode);
+void add_end(stack_t **stack, stack_t *newnode);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);

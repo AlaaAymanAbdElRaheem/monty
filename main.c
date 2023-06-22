@@ -26,6 +26,11 @@ int main(int argc, char **argv)
 		op_code = strtok(global_var.instruction, " \n\t");
 		if (op_code == NULL || *op_code == '#')
 			continue;
+		if (strcmp(op_code, "stack") == 0 || strcmp(op_code, "queue") == 0)
+		{
+			global_var.stack_mode = (strcmp(op_code, "stack") == 0) ? 1 : 0;
+			continue;
+		}
 		exec_op(op_code, &global_var.stack);
 	}
 	free_allocated();

@@ -1,6 +1,10 @@
+stack
 push 2
 push 3
-push 5
+push 4
 pall
-rotr
+queue
+push 5
+push 6
+push 7
 pall
