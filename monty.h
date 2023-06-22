@@ -44,7 +44,6 @@ typedef struct instruction_s
  * @file: file pointer
  * @instruction: instruction
  * @stack: pointer to the head node
- * @line_number: line number
  * @stack_mode: stack or queue mode
  * Description: global variables needed in the program
  */

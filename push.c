@@ -15,7 +15,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	args = strtok(NULL, " \n\t");
 	if (args == NULL || !is_number(args))
-		print_error_line("usage: push integer",line_number);
+		print_error_line("usage: push integer", line_number);
 	n = atoi(args);
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)

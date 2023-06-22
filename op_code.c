@@ -2,6 +2,7 @@
 /**
  * exec_op - executes the opcode
  * @code: opcode
+ * @line_number: line number
  * @stack: pointer to the head node
 */
 void exec_op(char *code, stack_t **stack, unsigned int line_number)
@@ -35,5 +36,5 @@ void exec_op(char *code, stack_t **stack, unsigned int line_number)
 		i++;
 	}
 	if (!flag)
-		print_error_opcode("unknown instruction", code,line_number);
+		print_error_opcode("unknown instruction", code, line_number);
 }
