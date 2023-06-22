@@ -53,14 +53,13 @@ typedef struct global_variable_s
 	FILE *file;
 	char *instruction;
 	stack_t *stack;
-	unsigned int line_number;
 	int stack_mode;
 } global_variable_t;
 extern global_variable_t global_var;
 
 int _isdigit(int c);
 int check_len(stack_t *head);
-void push(stack_t **stack, unsigned int linenumber);
+void push(stack_t **stack, unsigned int line_number);
 void add_begining(stack_t **stack, stack_t *newnode);
 void add_end(stack_t **stack, stack_t *newnode);
 void pall(stack_t **stack, unsigned int line_number);
@@ -80,9 +79,9 @@ void rotr(stack_t **stack, unsigned int line_number);
 /* error_handling.c */
 void print_error(int sz, ...);
 void free_allocated(void);
-void exec_op(char *code, stack_t **stack);
+void exec_op(char *code, stack_t **stack, unsigned int line_number);
 int is_number(char *str);
-void print_error_opcode(char *error, char *opcode, unsigned int *line_number);
-void print_error_line(char *error, unsigned int *line_number);
+void print_error_opcode(char *error, char *opcode, unsigned int line_number);
+void print_error_line(char *error, unsigned int line_number);
 
 #endif

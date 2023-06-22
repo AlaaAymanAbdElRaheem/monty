@@ -4,7 +4,7 @@
  * @code: opcode
  * @stack: pointer to the head node
 */
-void exec_op(char *code, stack_t **stack)
+void exec_op(char *code, stack_t **stack, unsigned int line_number)
 {
 	int i = 0, flag = 0;
 
@@ -30,10 +30,10 @@ void exec_op(char *code, stack_t **stack)
 		if (strcmp(op_codes[i].opcode, code) == 0)
 		{
 			flag = 1;
-			op_codes[i].f(stack, 0);
+			op_codes[i].f(stack, line_number);
 		}
 		i++;
 	}
 	if (!flag)
-		print_error_opcode("unknown instruction", code, &global_var.line_number);
+		print_error_opcode("unknown instruction", code,line_number);
 }

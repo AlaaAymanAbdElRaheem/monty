@@ -3,19 +3,19 @@
 /**
  * push - adds a new node at the beginning of the stack.
  * @stack: pointer to the head node
- * @linenumber: new value of the new node
+ * @line_number: new value of the new node
  */
 
-void push(stack_t **stack, unsigned int linenumber)
+void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node, *temp;
 	int n;
 	char *args;
-	(void) temp, (void) linenumber, (void) n;
+	(void) temp, (void) line_number, (void) n;
 
 	args = strtok(NULL, " \n\t");
 	if (args == NULL || !is_number(args))
-		print_error_line("usage: push integer", &global_var.line_number);
+		print_error_line("usage: push integer",line_number);
 	n = atoi(args);
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)

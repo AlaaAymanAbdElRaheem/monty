@@ -11,9 +11,10 @@ int main(int argc, char **argv)
 {
 	char *op_code;
 	size_t len = 0;
+	unsigned int line_number = 0;
 
 	global_var.stack_mode = 1;
-	global_var.line_number = 0;
+	global_var.stack = NULL;
 	if (argc != 2)
 		print_error(1, "USAGE: monty file");
 
@@ -23,7 +24,7 @@ int main(int argc, char **argv)
 
 	while (getline(&global_var.instruction, &len, global_var.file) != -1)
 	{
-		global_var.line_number++;
+		line_number++;
 		op_code = strtok(global_var.instruction, " \n\t");
 		if (op_code == NULL || *op_code == '#')
 			continue;
@@ -32,7 +33,7 @@ int main(int argc, char **argv)
 			global_var.stack_mode = (strcmp(op_code, "stack") == 0) ? 1 : 0;
 			continue;
 		}
-		exec_op(op_code, &global_var.stack);
+		exec_op(op_code, &global_var.stack, line_number);
 	}
 	free_allocated();
 	return (EXIT_SUCCESS);
