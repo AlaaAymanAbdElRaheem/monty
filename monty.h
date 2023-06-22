@@ -60,7 +60,7 @@ extern global_variable_t global_var;
 
 int _isdigit(int c);
 int check_len(stack_t *head);
-void push(stack_t **stack, unsigned int n);
+void push(stack_t **stack, unsigned int linenumber);
 void add_begining(stack_t **stack, stack_t *newnode);
 void add_end(stack_t **stack, stack_t *newnode);
 void pall(stack_t **stack, unsigned int line_number);
