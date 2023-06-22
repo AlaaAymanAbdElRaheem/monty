@@ -12,6 +12,7 @@ int main(int argc, char **argv)
 	char *op_code;
 	size_t len = 0;
 
+	global_var.stack_mode = 1;
 	global_var.line_number = 0;
 	if (argc != 2)
 		print_error(1, "USAGE: monty file");

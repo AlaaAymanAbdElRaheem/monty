@@ -20,7 +20,7 @@ void push(stack_t **stack, unsigned int n)
 		exit(EXIT_FAILURE);
 	}
 	new_node->n = n;
-	if (global_var.stack_mode == 1 || stack == NULL || *stack == NULL)
+	if (global_var.stack_mode == 1)
 		add_begining(stack, new_node);
 	else/*push in queue (from end)*/
 		add_end(stack, new_node);
@@ -33,19 +33,12 @@ void push(stack_t **stack, unsigned int n)
 */
 void add_begining(stack_t **stack, stack_t *newnode)
 {
-	if (*stack == NULL)
-	{
-		newnode->prev = NULL;
-		newnode->next = NULL;
-		*stack = newnode;
-	}
-	else
-	{
-		newnode->prev = NULL;
-		newnode->next = *stack;
+	newnode->prev = NULL;
+	newnode->next = *stack;
+	if (*stack != NULL)
 		(*stack)->prev = newnode;
-		*stack = newnode;
-	}
+	*stack = newnode;
+
 }
 /**
  * add_end - adds a new node at the end of the stack.
@@ -56,10 +49,19 @@ void add_end(stack_t **stack, stack_t *newnode)
 {
 	stack_t *temp;
 
-	temp = *stack;
-	while (temp->next != NULL)
-		temp = temp->next;
-	newnode->prev = temp;
-	newnode->next = NULL;
-	temp->next = newnode;
+	if (*stack == NULL)
+	{
+		newnode->prev = NULL;
+		newnode->next = NULL;
+		*stack = newnode;
+	}
+	else
+	{
+		temp = *stack;
+		while (temp->next != NULL)
+			temp = temp->next;
+		newnode->prev = temp;
+		newnode->next = NULL;
+		temp->next = newnode;
+	}
 }
