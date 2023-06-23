@@ -27,9 +27,9 @@ void print_error(int sz, ...)
  * @opcode: the opcode
  * @line_number: the line number
 */
-void print_error_opcode(char *error, char *opcode, unsigned int *line_number)
+void print_error_opcode(char *error, char *opcode, unsigned int line_number)
 {
-	fprintf(stderr, "L%u: %s %s\n", *line_number, error, opcode);
+	fprintf(stderr, "L%u: %s %s\n", line_number, error, opcode);
 	free_allocated();
 	exit(EXIT_FAILURE);
 }
@@ -38,9 +38,9 @@ void print_error_opcode(char *error, char *opcode, unsigned int *line_number)
  * @error: the error message
  * @line_number: the line number
 */
-void print_error_line(char *error, unsigned int *line_number)
+void print_error_line(char *error, unsigned int line_number)
 {
-	fprintf(stderr, "L%u: %s\n", *line_number, error);
+	fprintf(stderr, "L%u: %s\n", line_number, error);
 	free_allocated();
 	exit(EXIT_FAILURE);
 }

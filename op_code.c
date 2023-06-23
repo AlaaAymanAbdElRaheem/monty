@@ -2,12 +2,12 @@
 /**
  * exec_op - executes the opcode
  * @code: opcode
+ * @line_number: line number
  * @stack: pointer to the head node
 */
-void exec_op(char *code, stack_t **stack)
+void exec_op(char *code, stack_t **stack, unsigned int line_number)
 {
 	int i = 0, flag = 0;
-	char *argv;
 
 	instruction_t op_codes[] = {
 		{"push", push},
@@ -31,19 +31,10 @@ void exec_op(char *code, stack_t **stack)
 		if (strcmp(op_codes[i].opcode, code) == 0)
 		{
 			flag = 1;
-			argv = strtok(NULL, " \n\t");
-			if (strcmp(op_codes[i].opcode, "push") == 0)
-			{
-				if (argv == NULL || !is_number(argv))
-					print_error_line("usage: push integer", &global_var.line_number);
-				else
-					op_codes[i].f(stack, atoi(argv));
-			}
-			else
-				op_codes[i].f(stack, 0);
+			op_codes[i].f(stack, line_number);
 		}
 		i++;
 	}
 	if (!flag)
-		print_error_opcode("unknown instruction", code, &global_var.line_number);
+		print_error_opcode("unknown instruction", code, line_number);
 }

@@ -43,23 +43,24 @@ typedef struct instruction_s
  * struct global_variable_s - global variables
  * @file: file pointer
  * @instruction: instruction
- * @op_code: opcode
  * @stack: pointer to the head node
- * @line_number: line number
+ * @stack_mode: stack or queue mode
  * Description: global variables needed in the program
  */
 typedef struct global_variable_s
 {
 	FILE *file;
-	char *instruction, *op_code;
+	char *instruction;
 	stack_t *stack;
-	unsigned int line_number;
+	int stack_mode;
 } global_variable_t;
 extern global_variable_t global_var;
 
 int _isdigit(int c);
 int check_len(stack_t *head);
-void push(stack_t **stack, unsigned int n);
+void push(stack_t **stack, unsigned int line_number);
+void add_begining(stack_t **stack, stack_t *newnode);
+void add_end(stack_t **stack, stack_t *newnode);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
@@ -77,9 +78,9 @@ void rotr(stack_t **stack, unsigned int line_number);
 /* error_handling.c */
 void print_error(int sz, ...);
 void free_allocated(void);
-void exec_op(char *code, stack_t **stack);
+void exec_op(char *code, stack_t **stack, unsigned int line_number);
 int is_number(char *str);
-void print_error_opcode(char *error, char *opcode, unsigned int *line_number);
-void print_error_line(char *error, unsigned int *line_number);
+void print_error_opcode(char *error, char *opcode, unsigned int line_number);
+void print_error_line(char *error, unsigned int line_number);
 
 #endif
