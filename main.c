@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 
 	global_var.file = fopen(argv[1], "r");
 	if (global_var.file == NULL)
-		print_error(2, "Error: Can't open file", argv[1]);
+		print_error(2, "Error: Can't open file ", argv[1]);
 
 	while (getline(&global_var.instruction, &len, global_var.file) != -1)
 	{
